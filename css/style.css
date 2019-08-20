@@ -27,14 +27,14 @@ header h1 {
 
 header h1 span {
     font-style: italic;
-    color: #7f7fe3;
+    color: #8900e8;
 }
 
 .gradient-border {
     width: 95%;
     height: 1px;
     margin: 0 auto;
-    background: linear-gradient(to right,  #3399ff, #6666ff);
+    background: linear-gradient(to right,  #0067ff, #8900e8);
 }
 
 #theme-switcher {
@@ -96,7 +96,7 @@ section.list {
 /* ----------------------------------------------------------------- */
 
 div.node {
-    background:#6666ff;
+    background:#8900e8;
     width: var(--nodes-size);
     height: var(--nodes-size);
     text-align: center;
@@ -267,7 +267,7 @@ div.wrapper input::placeholder {
 
 button.button {
     border: none;
-    background: linear-gradient(-125deg,  #3399ff, #6666ff);
+    background: linear-gradient(-125deg,  #0067ff, #8900e8);
     padding: 10px;
     font-size: 1.5rem;
     font-weight: bold;
@@ -310,13 +310,13 @@ div.wrapper > div:nth-child(4) input {
 
 button#remove-btn {
     width: 70%;
-    background: linear-gradient(to right, #ff4c6a, #c00000);
+    background: linear-gradient(to right, #ff002b, #9f0000);
 }
 
 button#remove-settings {
     width: 30%;
     font-size: 1.3rem;
-    background: #c00000;
+    background: #9f0000;
 }
 
 button#remove-btn:hover, button#remove-settings:hover {
