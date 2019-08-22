@@ -12,17 +12,16 @@ body {
 /* Header */
 /* ----------------------------------------------------------------- */
 
-header {
-    position: relative;
+div.header-container {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    place-items: center;
 }
 
 header h1 {
-    width: 52.3%;
-    margin: 20px auto 10px auto;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     color: #fff;
-    padding-bottom: 15px;
 }
 
 header h1 span {
@@ -30,20 +29,17 @@ header h1 span {
     color: #8900e8;
 }
 
-.gradient-border {
+div#settings-menu, div#theme-switcher {
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+div.gradient-border {
     width: 95%;
     height: 1px;
     margin: 0 auto;
     background: linear-gradient(to right,  #0067ff, #8900e8);
-}
-
-#theme-switcher {
-    position: absolute;
-    right: 5%;
-    top: 5px;
-    color: #fff;
-    font-size: 2rem;
-    cursor: pointer;
 }
 
 /* ----------------------------------------------------------------- */
