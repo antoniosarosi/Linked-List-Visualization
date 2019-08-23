@@ -7,9 +7,15 @@ let error = document.getElementById('error');
 
 // Animations Timeouts
 
-let nodeAnimationTimeout = 1000;
-let pointerAnimationTimeout = 800;
-let deleteTimeout = 1000;
+let nodeAnimationTimeout;
+let pointerAnimationTimeout;
+let deleteTimeout;
+
+function setAnimationsTimeOuts(animations) {
+    nodeAnimationTimeout = animations.nodeAnimationTimeout;
+    pointerAnimationTimeout = animations.pointerAnimationTimeout;
+    deleteTimeout = animations.deleteTimeout;
+}
 
 // 'Private' functions
 

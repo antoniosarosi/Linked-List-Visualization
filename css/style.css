@@ -107,7 +107,7 @@ div#settings input {
 div#settings button {
     height: 32px;
     width: 90%;
-    margin-top: 95px;
+    margin-top: 34px;
     border: none;
     border-radius: 5px;
     background: linear-gradient(-125deg,  #0067ff, #8900e8);
@@ -501,13 +501,21 @@ section.errors {
     margin: 0 auto;
 }
 
-div.error-message {
+div.success, div.error-message {
     font-family: 'Livvic', sans-serif;
-    font-size: 18px;
-    color: rgb(218, 23, 23);
+    font-size: 16px;
     font-weight: bold;
     font-style: italic;
     margin-top: 30px;
+    height: 32px;
+}
+
+div.error-message {
+    color: rgb(218, 23, 23);
+}
+
+div.success {
+    color: green;
 }
 
 div.error-message p {
