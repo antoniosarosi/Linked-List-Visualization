@@ -13,24 +13,22 @@ document.addEventListener('DOMContentLoaded', function() {
     function getUserInput(parentNode) {
         let inputs = parentNode.getElementsByTagName('input');
         let userInput = {};
-        if (inputs.length === 1) {
-            if (inputs[0].placeholder === "Data")
-                userInput.data = inputs[0].valueAsNumber;
-            else
-                userInput.index = inputs[0].valueAsNumber;
-            return userInput;
-        }
+        let index_number = 1
         userInput.index = inputs[0].valueAsNumber;
-        userInput.data = inputs[1].valueAsNumber;
+        if ((inputs.length === 1) && ((inputs[0].placeholder === "Data"))) {
+                index_number = 0
+        }
+        userInput.data = inputs[index_number].valueAsNumber;
         return userInput;
     }
 
     // Add Button
-
+ 
     document.getElementById('add-btn').addEventListener('click', function() {
         let userInput = getUserInput(this.parentNode);
         add(nodes.length, userInput.data);
     });
+    
 
     // Set Button
 
@@ -82,48 +80,46 @@ document.addEventListener('DOMContentLoaded', function() {
         removeDataBtn.style.display = "none";
     }
 
+
+    function change_style(removeIndexBtn,animation,removeAnimation,toggleMenu,toggleMenu200){
+        //Applied extract method
+        animation = 
+        removeAnimation + 
+        menuAnimationTimeout / 1000 + "s " +
+        "ease";
+
+        removeIndexBtn.style.display = "block";
+        removeIndexBtn.style.animation = 
+            toggleMenu + 
+            menuAnimationTimeout / 1000 + "s " +
+            "ease";
+
+        removeDataBtn.style.display = "block";
+        removeDataBtn.style.animation = 
+            toggleMenu200 + 
+            menuAnimationTimeout / 1000 + "s " +
+            "ease";
+
+    }
+
+    function change_inputs(block, none){
+        //Applied extract method
+        inputs[0].style.display = block;
+        inputs[1].style.display = none;       
+    }
+
     document.getElementById('remove-settings').addEventListener('click', function() {
         let displayed =
 			removeIndexBtn.style.display !== "" &&
             removeIndexBtn.style.display !== "none";
 
         if (!displayed) {
-            this.firstChild.nextSibling.style.animation = 
-                "removeAnimationOn " + 
-                menuAnimationTimeout / 1000 + "s " +
-                "ease";
-
-            removeIndexBtn.style.display = "block";
-            removeIndexBtn.style.animation = 
-                "toggleMenuDown " + 
-                menuAnimationTimeout / 1000 + "s " +
-                "ease";
-
-            removeDataBtn.style.display = "block";
-            removeDataBtn.style.animation = 
-                "toggleMenuDown200 " + 
-                menuAnimationTimeout / 1000 + "s " +
-                "ease";
-
-            inputs[0].style.display = "none";
-            inputs[1].style.display = "none";
+           change_style(removeIndexBtn,this.firstChild.nextSibling.style,"removeAnimationOn ","toggleMenuDown ","toggleMenuDown200 ")
+           change_inputs("none","none");
         }
         else {
-            this.firstChild.nextSibling.style.animation = 
-                "removeAnimationOff " + 
-                menuAnimationTimeout / 1000 + "s " +
-                "ease";
-
-            removeIndexBtn.style.animation = 
-                "toggleMenuUp " + 
-                menuAnimationTimeout / 1000 + "s " +
-                "ease";
-
-            removeDataBtn.style.animation = 
-                "toggleMenuUp200 " + 
-                menuAnimationTimeout / 1000 + "s " +
-                "ease";
-
+    
+            change_style(removeIndexBtn,this.firstChild.nextSibling.style,"removeAnimationOff ","toggleMenuUp ","toggleMenuUp200 ")
             setTimeout(() => {
                 removeIndexBtn.style.display = "none";
                 removeDataBtn.style.display = "none";
@@ -132,15 +128,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     removeIndexBtn.addEventListener('click', () => {
-        inputs[0].style.display = "block";
-        inputs[1].style.display = "none";
+        change_inputs("block","none")
         hideButtons();
     });
 
     removeDataBtn.addEventListener("click", () => {
-		inputs[0].style.display = "none";
-        inputs[1].style.display = "block";
+        change_inputs("none","block")
         hideButtons();
 	});
      
 });
+
