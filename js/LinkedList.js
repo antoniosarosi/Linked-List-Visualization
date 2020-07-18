@@ -99,6 +99,55 @@ async function animateNodes(from, to) {
     }
 }
 
+function animateNodesAfterRemove (from) {
+    return new Promise(resolve => {
+        for (let i = from; i < nodes.length; i++) {
+
+            nodes[i].style.animation = 
+                "moveLeftNode " +
+                deleteTimeout / 1000 + "s "+
+                "ease";
+
+            pointers[i].style.animation = 
+                "moveLeftNode " +
+                deleteTimeout / 1000 + "s "+
+                "ease";
+
+            setTimeout(() => {
+                nodes[i].style.animation = null;
+                pointers[i].style.animation = null;
+            }, deleteTimeout)
+        }
+
+        setTimeout(() => resolve(), deleteTimeout)
+    })
+}
+
+function animateNodesBeforeInsert (from, to) {
+    return new Promise(resolve => {
+        for (let i = from; i < to; i++) {
+            console.log('length3', nodes.length)
+
+            nodes[i].style.animation = 
+                "moveRightNode " +
+                pointerAnimationTimeout / 1000 + "s "+
+                "ease";
+
+            pointers[i].style.animation = 
+                "moveRightNode " +
+                pointerAnimationTimeout / 1000 + "s "+
+                "ease";
+
+            setTimeout(() => {
+                nodes[i].style.animation = null;
+                pointers[i].style.animation = null;
+            }, pointerAnimationTimeout)
+        }
+
+        setTimeout(() => resolve(), pointerAnimationTimeout)
+    })
+}
+
 // Public functions
 
 async function add(i, data) {
@@ -135,6 +184,7 @@ async function add(i, data) {
     }
     else {
         await animateNodes(0, i - 1);
+        await animateNodesBeforeInsert(i, nodes.length)
         list.insertBefore(pointer, nodes[i]);
         list.insertBefore(node, pointer);
     }
@@ -185,6 +235,7 @@ async function removeIndex(i) {
         return;
 
     await animateNodes(0, i - 1);
+    animateNodesAfterRemove(i + 1);
     deleteNode(i);
 }
 
@@ -201,6 +252,7 @@ async function removeRecursively(i, data) {
     }
     else if (nodes[i].firstChild.innerHTML == data) {
         await deleteNode(i);
+        await animateNodesAfterRemove(i)
         removeRecursively(i, data);
     }
     else {
