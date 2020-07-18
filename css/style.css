@@ -236,6 +236,28 @@ div.node {
     }
 }
 
+@keyframes moveLeftNode{
+    0%{
+        transform: translateX(200%);
+    }
+    70%{
+        transform: translateX(250%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+@keyframes moveRightNode{
+    50%{
+        transform: translateX(250%);
+    }
+    100%{
+        transform: translateX(200%);
+
+    }
+}
+
 /* ----------------------------------------------------------------- */
 /* Number */
 /* ----------------------------------------------------------------- */
