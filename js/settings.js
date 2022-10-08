@@ -63,6 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setAnimationsTimeOuts(animations);
 
+    //set default values in inputs settings
+    inputs[0].value = animations.nodeAnimationTimeout;
+    inputs[1].value = animations.pointerAnimationTimeout;
+    inputs[2].value = animations.deleteTimeout;
+       
     document.getElementById('save-settings').addEventListener('click', () => {
         for (let i = 0; i < inputs.length; i++) 
             if (inputs[i].valueAsNumber < 0) {
